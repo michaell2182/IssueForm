@@ -1,0 +1,16 @@
+-- CreateTable
+CREATE TABLE `Issue` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `fullName` VARCHAR(255) NOT NULL,
+    `contact` INTEGER NOT NULL,
+    `email` VARCHAR(255) NOT NULL,
+    `department` ENUM('FLOOR1', 'FLOOR2', 'FLOOR3', 'FLOOR4') NOT NULL,
+    `title` VARCHAR(255) NOT NULL,
+    `catagory` ENUM('SOFTWARE', 'HARDWARE', 'ACCESSORIES', 'REQUEST') NOT NULL,
+    `description` TEXT NOT NULL,
+    `status` ENUM('NEW', 'IN_PROGRESS', 'CLOSED') NOT NULL DEFAULT 'NEW',
+    `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `updatedAt` DATETIME(3) NOT NULL,
+
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;

@@ -12,3 +12,38 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
+
+model Issue {
+  id          Int        @id @default(autoincrement())
+  fullName    String     @db.VarChar(255)
+  contact     Int
+  email       String     @db.VarChar(255)
+  department  Department
+  title       String     @db.VarChar(255)
+  catagory    Catagory
+  description String     @db.Text
+  status      Status     @default(NEW)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+}
+
+enum Status {
+  NEW
+  IN_PROGRESS
+  CLOSED
+}
+
+enum Department {
+  FLOOR1
+  FLOOR2
+  FLOOR3
+  FLOOR4
+}
+
+enum Catagory {
+  SOFTWARE
+  HARDWARE
+  ACCESSORIES
+  REQUEST
+  OTHER
+}

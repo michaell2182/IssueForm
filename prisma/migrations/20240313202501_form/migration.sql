@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE `issue` MODIFY `catagory` ENUM('SOFTWARE', 'HARDWARE', 'ACCESSORIES', 'REQUEST', 'OTHER') NOT NULL;
