@@ -24,10 +24,16 @@ export function Form() {
         .min(2, "Name Must Be At Least 2 Characters")
         .max(50)
         .required("Full Name Is Required"),
-      contact: Yup.string().min(2,"Contact Information Is Required").required("Contact Information Is Required"),
-      email: Yup.string().email("Invalid email address").required("A Valid Email Is Required"),
-      department: Yup.string().min(2,"Required").required("Department Is Required"),
-      title: Yup.string().min(2,"Required").required("Title Is Required"),
+      contact: Yup.string()
+        .min(2, "Contact Information Is Required")
+        .required("Contact Information Is Required"),
+      email: Yup.string()
+        .email("Invalid email address")
+        .required("A Valid Email Is Required"),
+      department: Yup.string()
+        .min(2, "Required")
+        .required("Department Is Required"),
+      title: Yup.string().min(2, "Required").required("Title Is Required"),
       category: Yup.string()
         .oneOf(
           ["SOFTWARE", "HARDWARE", "ACCESSORIES", "REQUEST"],
@@ -39,34 +45,33 @@ export function Form() {
 
     onSubmit: async (values) => {
       try {
-        const response = await fetch('/api/add-post', {
-          method: 'POST',
+        const response = await fetch("/api/add-post", {
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
           body: JSON.stringify(values),
         });
 
         if (!response.ok) {
-          throw new Error('Failed to submit form');
+          throw new Error("Failed to submit form");
         }
 
         // Handle successful form submission
-        console.log('Form submitted successfully:', values);
+        console.log("Form submitted successfully:", values);
       } catch (error) {
         // Handle form submission errors
-        console.error('Error submitting form:', error);
+        console.error("Error submitting form:", error);
       }
     },
   });
 
   return (
-    <div className="flex h-screen w-full bg-[#030712]">
+    
+    <div className="flex h-screen w-full  ">
       <div className="flex w-1/2 flex-col p-16">
-        <h1 className="text-4xl font-bold text-white inline-block">
-          Having An Issue?
-        </h1>
-        <p className="mt-4 mb-8 text-lg text-gray-400 ">
+        <h1 className="text-4xl font-bold  inline-block">Having An Issue?</h1>
+        <p className="mt-4 mb-8 text-lg text-gray-600 ">
           Please describe your issue in as much detail as possible. We will get
           back to you as soon as possible.
         </p>
@@ -75,7 +80,7 @@ export function Form() {
             <div className="space-y-2">
               <Label
                 htmlFor="full-name"
-                className={`text-white ${
+                className={` ${
                   formik.touched.fullName && formik.errors.fullName
                     ? "text-red-400"
                     : ""
@@ -86,7 +91,7 @@ export function Form() {
                   : "Full Name"}
               </Label>
               <Input
-                className="w-full  dark:bg-gray-800"
+                className="w-full  "
                 id="full-name"
                 placeholder="Full Name:"
                 value={formik.values.fullName}
@@ -95,18 +100,20 @@ export function Form() {
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="contact"
-              className={`text-white ${
-                formik.touched.contact && formik.errors.contact
-                  ? "text-red-400"
-                  : ""
-              }`}> 
+              <Label
+                htmlFor="contact"
+                className={` ${
+                  formik.touched.contact && formik.errors.contact
+                    ? "text-red-400"
+                    : ""
+                }`}
+              >
                 {formik.touched.contact && formik.errors.contact
                   ? formik.errors.contact
                   : "Contact"}
               </Label>
               <Input
-                className="w-full dark:bg-gray-800"
+                className="w-full"
                 id="contact"
                 placeholder="Telephone Or Email:"
                 value={formik.values.contact}
@@ -117,17 +124,21 @@ export function Form() {
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="email"
-             className={`text-white ${
-              formik.touched.email && formik.errors.email
-                ? "text-red-400"
-                : ""
-            }`}>  {formik.touched.email && formik.errors.email
-              ? formik.errors.email
-              : "Email"}
-            </Label>
+              <Label
+                htmlFor="email"
+                className={` ${
+                  formik.touched.email && formik.errors.email
+                    ? "text-red-400"
+                    : ""
+                }`}
+              >
+                {" "}
+                {formik.touched.email && formik.errors.email
+                  ? formik.errors.email
+                  : "Email"}
+              </Label>
               <Input
-                className="w-full dark:bg-gray-800"
+                className="w-full"
                 id="email"
                 placeholder="Your Email Address:"
                 value={formik.values.email}
@@ -135,18 +146,20 @@ export function Form() {
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="department"
-              className={`text-white ${
-                formik.touched.department && formik.errors.department
-                  ? "text-red-400"
-                  : ""
-              }`}> 
-              {formik.touched.department && formik.errors.department
-              ? formik.errors.department
-              : "Department"}
-             </Label>
+              <Label
+                htmlFor="department"
+                className={` ${
+                  formik.touched.department && formik.errors.department
+                    ? "text-red-400"
+                    : ""
+                }`}
+              >
+                {formik.touched.department && formik.errors.department
+                  ? formik.errors.department
+                  : "Department"}
+              </Label>
               <Input
-                className="w-full dark:bg-gray-800"
+                className="w-full"
                 id="department"
                 placeholder="Where Do You Need Help?"
                 value={formik.values.department}
@@ -157,18 +170,21 @@ export function Form() {
 
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="issue-title"
-              className={`text-white ${
-                formik.touched.title && formik.errors.title
-                  ? "text-red-400"
-                  : ""
-              }`}
-              > {formik.touched.title && formik.errors.title
-              ? formik.errors.title
-              : "Issue Title"} 
+              <Label
+                htmlFor="issue-title"
+                className={` ${
+                  formik.touched.title && formik.errors.title
+                    ? "text-red-400"
+                    : ""
+                }`}
+              >
+                {" "}
+                {formik.touched.title && formik.errors.title
+                  ? formik.errors.title
+                  : "Issue Title"}
               </Label>
               <Input
-                className="w-full  dark:bg-gray-800"
+                className="w-full  "
                 id="issue-title"
                 placeholder="What's The Issue?:"
                 value={formik.values.title}
@@ -177,24 +193,28 @@ export function Form() {
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="category"
-              className={`text-white ${formik.touched.category && formik.errors.category ? "text-red-400" : ""}`}
-              >{formik.touched.category && formik.errors.category
-              ? formik.errors.category
-              : "Category"}
+              <Label
+                htmlFor="category"
+                className={` ${
+                  formik.touched.category && formik.errors.category
+                    ? "text-red-400"
+                    : ""
+                }`}
+              >
+                {formik.touched.category && formik.errors.category
+                  ? formik.errors.category
+                  : "Category"}
               </Label>
-              <div className="w-full dark:bg-gray-800 size-10  rounded-md ">
+              <div className="w-full  size-10  rounded-md ">
                 <select
                   id="category"
                   name="category"
-                  className="w-full text-sm p-3 rounded-md dark:bg-gray-800"
+                  className="w-full text-sm p-3 rounded-md bg-black"
                   style={{ color: "#9ca3af" }}
                   value={formik.values.category}
                   onChange={formik.handleChange}
                 >
-                  <option className="font-serif" value="">
-                   
-                  </option>
+                  <option className="font-serif" value=""></option>
                   <option className="font-serif" value="SOFTWARE">
                     Software Issue: Email, Word, Outlook, etc.
                   </option>
@@ -212,27 +232,26 @@ export function Form() {
             </div>
           </div>
           <div className="space-y-2">
-            <Label>
-              Description
-            </Label>
-          <Textarea
-            className="w-full min-h-[100px]  dark:bg-gray-800"
-            id="description"
-            placeholder="Description"
-            value={formik.values.description}
-            onChange={formik.handleChange}
-            name="description"
-          />
+            <Label>Description</Label>
+            <Textarea
+              className="w-full min-h-[100px]  "
+              id="description"
+              placeholder="Description"
+              value={formik.values.description}
+              onChange={formik.handleChange}
+              name="description"
+            />
           </div>
           <Button
+          style={{ backgroundColor: "black", color: "white" }}
             type="submit"
-            className=" hover: ease-in duration-300 hover:scale-105 "
+            className="hover: ease-in duration-300 hover:scale-105 "
           >
             Submit <ArrowRightIcon style={{ height: 14, width: 20 }} />{" "}
           </Button>
         </form>
       </div>
-      <div className="w-1/2 p-4 opacity-60">
+      <div className="w-1/2 p-4 ">
         <img
           src={helpdesk.src}
           className="h-full w-full object-cover rounded-lg"
