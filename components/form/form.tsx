@@ -7,6 +7,8 @@ import helpdesk from "../../public/marvin-meyer-SYTO3xs06fU-unsplash.jpg";
 import { ArrowRightIcon } from "@radix-ui/react-icons";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { Separator } from "@/components/ui/separator";
+
 export function Form() {
   const formik = useFormik({
     initialValues: {
@@ -67,14 +69,15 @@ export function Form() {
   });
 
   return (
-    
     <div className="flex h-screen w-full  ">
       <div className="flex w-1/2 flex-col p-16">
-        <h1 className="text-4xl font-bold  inline-block">Having An Issue?</h1>
-        <p className="mt-4 mb-8 text-lg text-gray-600 ">
+        <h1 className="text-2xl font-bold  inline-block">Having An Issue?</h1>
+        <p className="mt-2 mb-4 text-md text-gray-600 ">
           Please describe your issue in as much detail as possible. We will get
           back to you as soon as possible.
         </p>
+        <Separator style={{ backgroundColor: "gray-600" }} />
+
         <form onSubmit={formik.handleSubmit} className="space-y-6">
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
@@ -91,12 +94,13 @@ export function Form() {
                   : "Full Name"}
               </Label>
               <Input
-                className="w-full  "
+                className="w-full"
                 id="full-name"
                 placeholder="Full Name:"
                 value={formik.values.fullName}
                 onChange={formik.handleChange}
                 name="fullName"
+                style={{ backgroundColor: "white", border: "1px solid gray" }}
               />
             </div>
             <div className="space-y-2">
@@ -119,6 +123,7 @@ export function Form() {
                 value={formik.values.contact}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
+                style={{ backgroundColor: "white", border: "1px solid gray" }}
               />
             </div>
           </div>
@@ -143,6 +148,7 @@ export function Form() {
                 placeholder="Your Email Address:"
                 value={formik.values.email}
                 onChange={formik.handleChange}
+                style={{ backgroundColor: "white", border: "1px solid gray" }}
               />
             </div>
             <div className="space-y-2">
@@ -164,6 +170,7 @@ export function Form() {
                 placeholder="Where Do You Need Help?"
                 value={formik.values.department}
                 onChange={formik.handleChange}
+                style={{ backgroundColor: "white", border: "1px solid gray" }}
               />
             </div>
           </div>
@@ -190,6 +197,7 @@ export function Form() {
                 value={formik.values.title}
                 onChange={formik.handleChange}
                 name="title"
+                style={{ backgroundColor: "white", border: "1px solid gray" }}
               />
             </div>
             <div className="space-y-2">
@@ -210,9 +218,10 @@ export function Form() {
                   id="category"
                   name="category"
                   className="w-full text-sm p-3 rounded-md bg-black"
-                  style={{ color: "#9ca3af" }}
+               
                   value={formik.values.category}
                   onChange={formik.handleChange}
+                  style={{ backgroundColor: "white", border: "1px solid gray" }}
                 >
                   <option className="font-serif" value=""></option>
                   <option className="font-serif" value="SOFTWARE">
@@ -240,10 +249,11 @@ export function Form() {
               value={formik.values.description}
               onChange={formik.handleChange}
               name="description"
+              style={{ backgroundColor: "white", border: "1px solid gray" }}
             />
           </div>
           <Button
-          style={{ backgroundColor: "black", color: "white" }}
+            style={{ backgroundColor: "black", color: "white" }}
             type="submit"
             className="hover: ease-in duration-300 hover:scale-105 "
           >

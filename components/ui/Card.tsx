@@ -11,6 +11,7 @@ export type CardProps = {
 };
 export default function Card(props: CardProps) {
   return (
+    
     <CardContent>
       <section className="flex justify-between gap-2">
         <p className="text-sm">{props.label}</p>
@@ -29,7 +30,7 @@ export function CardContent(props: React.HTMLAttributes<HTMLDivElement>) {
     <div
       {...props}
       className={cn(
-        "flex w-full flex-col gap-3 rounded-xl border p-5 shadow",
+        "flex w--56 flex-col gap-5 rounded-xl border p-8 shadow h-56",
         props.className
       )}
     />
